@@ -2,11 +2,16 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background-color: white;
-  border: 1px solid #ccc;
+  background-color: rgb(255, 65, 65);
+  border-radius: 8px;
   padding: 10px;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000; /* Ensure the dropdown is above other elements */
+  gap: 5px;
+  place-content: center;
+}
+
+.button {
+  padding: 5px;
 }
