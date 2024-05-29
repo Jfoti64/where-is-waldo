@@ -1,0 +1,9 @@
+/* /src/components/GameImage.module.css */
+.container {
+  position: relative;
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+}

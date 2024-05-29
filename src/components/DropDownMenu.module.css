@@ -1,0 +1,12 @@
+/* /src/components/DropDownMenu.module.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure the dropdown is above other elements */
+}

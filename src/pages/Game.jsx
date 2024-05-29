@@ -1,12 +1,11 @@
 import Sidebar from '../components/Sidebar';
+import GameImage from '../components/GameImage';
 
 const Game = () => {
   return (
     <>
       <Sidebar />
-      <div>
-        <img src="src/assets/whereswaldo.jpg" alt="where's Waldo game" />
-      </div>
+      <GameImage />
     </>
   );
 };
