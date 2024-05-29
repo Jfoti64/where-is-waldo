@@ -1,0 +1,14 @@
+.container {
+  padding: 20px;
+}
+
+.characterExamples {
+  display: flex;
+  gap: 30px;
+  place-content: center;
+}
+
+.characterIcon {
+  width: 80px;
+  height: auto;
+}
