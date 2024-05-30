@@ -3,6 +3,7 @@ import { useState } from 'react';
 import DropDownMenu from './DropDownMenu';
 import styles from './GameImage.module.css';
 import TargetingBox from './TargetingBox';
+import FoundMarker from './FoundMarker';
 import { fetchCharacterByName } from '../services/api';
 
 const GameImage = () => {
@@ -10,6 +11,7 @@ const GameImage = () => {
   const [dropDownPosition, setDropDownPosition] = useState({ top: 0, left: 0 });
   const [targetBoxPosition, setTargetBoxPosition] = useState({ top: 0, left: 0 });
   const [clickLocation, setClickLocation] = useState({ x: 0, y: 0 });
+  const [foundCharacters, setFoundCharacters] = useState([]);
 
   const menuWidth = 100; // Width of the dropdown menu
   const menuHeight = 100; // Height of the dropdown menu
@@ -43,6 +45,16 @@ const GameImage = () => {
       clickLocation.y >= characterSelected.coordinates.y - 15 &&
       clickLocation.y <= characterSelected.coordinates.y + 15
     ) {
+      setFoundCharacters([
+        ...foundCharacters,
+        {
+          name: character,
+          position: {
+            top: characterSelected.coordinates.y - 40,
+            left: characterSelected.coordinates.x - 15,
+          },
+        },
+      ]);
       console.log(`Found: ${character}`);
     } else {
       console.log('Not found');
@@ -66,6 +78,9 @@ const GameImage = () => {
         handleCharacterSelect={handleCharacterSelect}
       />
       <TargetingBox display={display} position={targetBoxPosition} />
+      {foundCharacters.map((character, index) => (
+        <FoundMarker key={index} found={true} position={character.position} />
+      ))}
     </div>
   );
 };

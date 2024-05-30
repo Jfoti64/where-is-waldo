@@ -1,0 +1,9 @@
+/* /src/components/FoundMarker.module.css */
+.marker {
+  position: absolute;
+  transition: transform 0.3s ease;
+}
+
+.path {
+  fill: red; /* Change this color as needed */
+}
