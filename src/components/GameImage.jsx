@@ -9,12 +9,18 @@ const GameImage = () => {
   const [display, setDisplay] = useState(false);
   const [dropDownPosition, setDropDownPosition] = useState({ top: 0, left: 0 });
   const [targetBoxPosition, setTargetBoxPosition] = useState({ top: 0, left: 0 });
+  const [clickLocation, setClickLocation] = useState({ x: 0, y: 0 });
 
   const menuWidth = 100; // Width of the dropdown menu
   const menuHeight = 100; // Height of the dropdown menu
 
   const handleImageClick = (event) => {
     const imgRect = event.target.getBoundingClientRect();
+
+    setClickLocation({
+      x: event.clientX - imgRect.left,
+      y: event.clientY - imgRect.top,
+    });
 
     setDisplay(!display);
     setDropDownPosition({
@@ -30,7 +36,17 @@ const GameImage = () => {
 
   const handleCharacterSelect = async (character) => {
     const characterSelected = await fetchCharacterByName(character);
-    console.log(characterSelected.name);
+    // Check that click location is within 15px of the stored character's location
+    if (
+      clickLocation.x >= characterSelected.coordinates.x - 15 &&
+      clickLocation.x <= characterSelected.coordinates.x + 15 &&
+      clickLocation.y >= characterSelected.coordinates.y - 15 &&
+      clickLocation.y <= characterSelected.coordinates.y + 15
+    ) {
+      console.log(`Found: ${character}`);
+    } else {
+      console.log('Not found');
+    }
     setDisplay(false); // Hide the dropdown after selection
   };
 
