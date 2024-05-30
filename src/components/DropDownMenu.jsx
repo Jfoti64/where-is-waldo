@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import styles from './DropDownMenu.module.css';
 
-const DropDownMenu = ({ display, position, menuWidth, menuHeight }) => {
+const DropDownMenu = ({ display, position, menuWidth, menuHeight, handleCharacterSelect }) => {
   if (!display) return null;
 
   const { top, left } = position;
@@ -18,9 +18,15 @@ const DropDownMenu = ({ display, position, menuWidth, menuHeight }) => {
         height: `${menuHeight}px`, // Ensure this matches the menuHeight used in GameImage
       }}
     >
-      <button className={styles.button}>Waldo</button>
-      <button className={styles.button}>Odlaw</button>
-      <button className={styles.button}>Wizard</button>
+      <button className={styles.button} onClick={() => handleCharacterSelect('Waldo')}>
+        Waldo
+      </button>
+      <button className={styles.button} onClick={() => handleCharacterSelect('Odlaw')}>
+        Odlaw
+      </button>
+      <button className={styles.button} onClick={() => handleCharacterSelect('Wizard')}>
+        Wizard
+      </button>
     </div>
   );
 };
@@ -33,6 +39,7 @@ DropDownMenu.propTypes = {
     top: PropTypes.number.isRequired,
     left: PropTypes.number.isRequired,
   }).isRequired,
+  handleCharacterSelect: PropTypes.func.isRequired,
 };
 
 export default DropDownMenu;

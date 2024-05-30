@@ -3,6 +3,7 @@ import { useState } from 'react';
 import DropDownMenu from './DropDownMenu';
 import styles from './GameImage.module.css';
 import TargetingBox from './TargetingBox';
+import { fetchCharacterByName } from '../services/api';
 
 const GameImage = () => {
   const [display, setDisplay] = useState(false);
@@ -12,7 +13,7 @@ const GameImage = () => {
   const menuWidth = 100; // Width of the dropdown menu
   const menuHeight = 100; // Height of the dropdown menu
 
-  const handleClick = (event) => {
+  const handleImageClick = (event) => {
     const imgRect = event.target.getBoundingClientRect();
 
     setDisplay(!display);
@@ -27,10 +28,16 @@ const GameImage = () => {
     });
   };
 
+  const handleCharacterSelect = async (character) => {
+    const characterSelected = await fetchCharacterByName(character);
+    console.log(characterSelected.name);
+    setDisplay(false); // Hide the dropdown after selection
+  };
+
   return (
     <div className={styles.container}>
       <img
-        onClick={handleClick}
+        onClick={handleImageClick}
         src="src/assets/whereswaldo.jpg"
         alt="where's Waldo game"
         className={styles.image}
@@ -40,6 +47,7 @@ const GameImage = () => {
         position={dropDownPosition}
         menuHeight={menuHeight}
         menuWidth={menuWidth}
+        handleCharacterSelect={handleCharacterSelect}
       />
       <TargetingBox display={display} position={targetBoxPosition} />
     </div>
