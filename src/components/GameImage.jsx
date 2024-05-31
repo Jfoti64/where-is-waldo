@@ -1,17 +1,17 @@
 // /src/components/GameImage.jsx
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import DropDownMenu from './DropDownMenu';
 import styles from './GameImage.module.css';
 import TargetingBox from './TargetingBox';
 import FoundMarker from './FoundMarker';
 import { fetchCharacterByName } from '../services/api';
 
-const GameImage = () => {
+const GameImage = ({ onCharacterFound, foundCharacters }) => {
   const [display, setDisplay] = useState(false);
   const [dropDownPosition, setDropDownPosition] = useState({ top: 0, left: 0 });
   const [targetBoxPosition, setTargetBoxPosition] = useState({ top: 0, left: 0 });
   const [clickLocation, setClickLocation] = useState({ x: 0, y: 0 });
-  const [foundCharacters, setFoundCharacters] = useState([]);
 
   const menuWidth = 100; // Width of the dropdown menu
   const menuHeight = 100; // Height of the dropdown menu
@@ -45,16 +45,10 @@ const GameImage = () => {
       clickLocation.y >= characterSelected.coordinates.y - 15 &&
       clickLocation.y <= characterSelected.coordinates.y + 15
     ) {
-      setFoundCharacters([
-        ...foundCharacters,
-        {
-          name: character,
-          position: {
-            top: characterSelected.coordinates.y - 40,
-            left: characterSelected.coordinates.x - 15,
-          },
-        },
-      ]);
+      onCharacterFound(character, {
+        top: characterSelected.coordinates.y - 40,
+        left: characterSelected.coordinates.x - 15,
+      });
       console.log(`Found: ${character}`);
     } else {
       console.log('Not found');
@@ -83,6 +77,19 @@ const GameImage = () => {
       ))}
     </div>
   );
+};
+
+GameImage.propTypes = {
+  onCharacterFound: PropTypes.func.isRequired,
+  foundCharacters: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      position: PropTypes.shape({
+        top: PropTypes.number.isRequired,
+        left: PropTypes.number.isRequired,
+      }).isRequired,
+    })
+  ).isRequired,
 };
 
 export default GameImage;
