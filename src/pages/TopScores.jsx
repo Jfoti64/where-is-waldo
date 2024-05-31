@@ -26,12 +26,28 @@ const Home = () => {
       <div className={styles.container}>
         <h2>Top Scores</h2>
         <ul>
-          {topScores.map((score) => (
-            <li key={score._id}>
-              <p>Username: {score.user_name}</p>
-              <p>Time: {score.time}</p>
-            </li>
-          ))}
+          {topScores.map((score) => {
+            const time = score.time;
+
+            // Minutes calculation
+            const minutes = Math.floor((time % 360000) / 6000);
+
+            // Seconds calculation
+            const seconds = Math.floor((time % 6000) / 100);
+
+            // Milliseconds calculation
+            const milliseconds = time % 100;
+
+            return (
+              <li key={score._id}>
+                <p>Username: {score.user_name}</p>
+                <p className={styles.time}>
+                  {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}:
+                  {milliseconds.toString().padStart(2, '0')}
+                </p>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </>
