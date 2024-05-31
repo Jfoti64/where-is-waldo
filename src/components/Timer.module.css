@@ -1,0 +1,7 @@
+/* src/components/Timer.module.css */
+.timer {
+  font-size: 24px;
+  color: #d62828;
+  text-align: center;
+  margin-top: 10px;
+}

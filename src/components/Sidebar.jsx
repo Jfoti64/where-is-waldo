@@ -2,20 +2,20 @@ import styles from './Sidebar.module.css';
 
 const Sidebar = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.sidebar}>
       <h1>Find them all</h1>
-      <div className={styles.characterExamples}>
+      <div className={styles.character_examples}>
         <div>
-          <h2>Waldo</h2>
-          <img src="src/assets/waldoUp.png" alt="Waldo" className={styles.characterIcon} />
+          <h2 className={styles.character_name}>Waldo</h2>
+          <img src="src/assets/waldoUp.png" alt="Waldo" className={styles.character_icon} />
         </div>
         <div>
-          <h2>Odlaw</h2>
-          <img src="src/assets/odlaw.gif" alt="Odlaw" className={styles.characterIcon} />
+          <h2 className={styles.character_name}>Odlaw</h2>
+          <img src="src/assets/odlaw.gif" alt="Odlaw" className={styles.character_icon} />
         </div>
         <div>
-          <h2>Wizard</h2>
-          <img src="src/assets/wizard.gif" alt="Wizard" className={styles.characterIcon} />
+          <h2 className={styles.character_name}>Wizard</h2>
+          <img src="src/assets/wizard.gif" alt="Wizard" className={styles.character_icon} />
         </div>
       </div>
     </div>

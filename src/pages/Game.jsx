@@ -83,8 +83,8 @@ const Game = () => {
   return (
     <>
       <Sidebar />
-      <GameImage onCharacterFound={handleCharacterFound} foundCharacters={foundCharacters} />
       <Timer minutes={minutes} seconds={seconds} milliseconds={milliseconds} />
+      <GameImage onCharacterFound={handleCharacterFound} foundCharacters={foundCharacters} />
       <SubmitScoreForm
         display={displayForm}
         time={time}

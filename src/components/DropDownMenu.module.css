@@ -1,17 +1,25 @@
-/* /src/components/DropDownMenu.module.css */
+/* src/components/DropDownMenu.module.css */
 .container {
   display: flex;
   flex-direction: column;
-  background-color: rgb(255, 65, 65);
-  border-radius: 8px;
+  background-color: #ffffff;
+  border: 2px solid #d62828;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Ensure the dropdown is above other elements */
-  gap: 5px;
-  place-content: center;
+  z-index: 1000;
 }
 
 .button {
-  padding: 5px;
+  background-color: #003049;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #d62828;
 }

@@ -1,14 +1,27 @@
-.container {
+/* src/components/Sidebar.module.css */
+.sidebar {
+  background-color: #ffcb77;
   padding: 20px;
+  border: 3px solid #d62828;
 }
 
-.characterExamples {
+.sidebar h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.character_examples {
   display: flex;
-  gap: 30px;
-  place-content: center;
+  align-content: center;
+  justify-content: space-around;
 }
 
-.characterIcon {
+.character_icon {
   width: 80px;
-  height: auto;
+  margin-bottom: 10px;
+}
+
+.character_name {
+  font-size: 18px;
+  color: #003049;
 }

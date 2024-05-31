@@ -1,0 +1,45 @@
+/* src/components/SubmitScoreForm.module.css */
+body {
+  background-color: #f0f0f0; /* optional: to distinguish the form background */
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 25%);
+  background-color: #ffffff;
+  border: 2px solid #d62828;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+}
+
+input {
+  width: calc(100% - 22px); /* Adjust width to fit within the container */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+button {
+  background-color: #003049;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #d62828;
+}
+
+.message {
+  color: #d62828;
+  margin-top: 10px;
+}
