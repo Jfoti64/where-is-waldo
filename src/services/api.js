@@ -47,3 +47,16 @@ export const submitScore = async (user_name, time) => {
     throw error;
   }
 };
+
+export const fetchTopScores = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/scores`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  } catch (error) {
+    console.error('Failed to fetch top scores:', error);
+    throw error;
+  }
+};

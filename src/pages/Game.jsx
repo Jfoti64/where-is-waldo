@@ -5,6 +5,7 @@ import GameImage from '../components/GameImage';
 import Timer from '../components/Timer';
 import SubmitScoreForm from '../components/SubmitScoreForm';
 import { submitScore, fetchCharacterCount } from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 const Game = () => {
   // State to store time
@@ -22,6 +23,8 @@ const Game = () => {
   const [message, setMessage] = useState('');
   const [userName, setUserName] = useState('');
   const [displayForm, setDisplayForm] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getCharacterCount = async () => {
@@ -70,6 +73,7 @@ const Game = () => {
       await submitScore(nameToSubmit, time);
       setMessage('Score submitted successfully!');
       setDisplayForm(false);
+      navigate('/TopScores'); // Redirect to the home page or another protected page
     } catch (error) {
       console.error('Submission failed', error);
       setMessage('Submission failed. Please try again.');
