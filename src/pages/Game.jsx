@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import GameImage from '../components/GameImage';
 import Timer from '../components/Timer';
-import { fetchCharacterCount } from '../services/api';
+import SubmitScoreForm from '../components/SubmitScoreForm';
+import { submitScore, fetchCharacterCount } from '../services/api';
 
 const Game = () => {
   // State to store time
@@ -17,6 +18,10 @@ const Game = () => {
 
   // State to store found characters
   const [foundCharacters, setFoundCharacters] = useState([]);
+
+  const [message, setMessage] = useState('');
+  const [userName, setUserName] = useState('');
+  const [displayForm, setDisplayForm] = useState(false);
 
   useEffect(() => {
     const getCharacterCount = async () => {
@@ -53,7 +58,20 @@ const Game = () => {
     setFoundCharacters([...foundCharacters, { name: character, position }]);
     if (foundCharacters.length + 1 >= characterCount) {
       setIsRunning(false); // Stop the timer when all characters are found
+      setDisplayForm(true); // Display the form to submit the score
       console.log('You win!');
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await submitScore(userName, time);
+      setMessage('Score submitted successfully!');
+      setDisplayForm(false);
+    } catch (error) {
+      console.error('Submission failed', error);
+      setMessage('Submission failed. Please try again.');
     }
   };
 
@@ -62,6 +80,14 @@ const Game = () => {
       <Sidebar />
       <GameImage onCharacterFound={handleCharacterFound} foundCharacters={foundCharacters} />
       <Timer minutes={minutes} seconds={seconds} milliseconds={milliseconds} />
+      <SubmitScoreForm
+        display={displayForm}
+        time={time}
+        handleSubmit={handleSubmit}
+        message={message}
+        user_name={userName}
+        setUserName={setUserName}
+      />
     </>
   );
 };

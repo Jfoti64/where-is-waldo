@@ -26,3 +26,24 @@ export const fetchCharacterCount = async () => {
     throw error;
   }
 };
+
+export const submitScore = async (user_name, time) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/scores`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user_name, time }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error('Failed to submit score:', error);
+    throw error;
+  }
+};
