@@ -11,12 +11,7 @@ const SubmitScoreForm = ({ display, handleSubmit, message, user_name, setUserNam
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username:</label>
-          <input
-            type="text"
-            onChange={(e) => setUserName(e.target.value)}
-            value={user_name}
-            required
-          />
+          <input type="text" onChange={(e) => setUserName(e.target.value)} value={user_name} />
         </div>
         <button type="submit">Submit</button>
       </form>
@@ -28,8 +23,8 @@ const SubmitScoreForm = ({ display, handleSubmit, message, user_name, setUserNam
 SubmitScoreForm.propTypes = {
   display: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  message: PropTypes.string.isRequired,
-  user_name: PropTypes.string.isRequired,
+  message: PropTypes.string,
+  user_name: PropTypes.string,
   setUserName: PropTypes.func.isRequired,
 };
 

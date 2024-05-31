@@ -66,7 +66,8 @@ const Game = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await submitScore(userName, time);
+      const nameToSubmit = userName.trim() === '' ? 'Anonymous' : userName;
+      await submitScore(nameToSubmit, time);
       setMessage('Score submitted successfully!');
       setDisplayForm(false);
     } catch (error) {
