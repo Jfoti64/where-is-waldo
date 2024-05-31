@@ -8,6 +8,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px;
   z-index: 1000;
+  justify-content: space-around;
 }
 
 .button {
@@ -16,7 +17,6 @@
   border: none;
   border-radius: 5px;
   padding: 10px;
-  margin: 5px 0;
   cursor: pointer;
 }
 

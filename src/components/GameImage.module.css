@@ -1,9 +1,14 @@
 /* /src/components/GameImage.module.css */
 .container {
   position: relative;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .image {
   display: block;
-  max-width: 100%;
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  box-sizing: border-box; /* Include padding and border in width/height calculations */
 }
