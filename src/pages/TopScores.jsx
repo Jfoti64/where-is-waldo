@@ -21,7 +21,9 @@ const Home = () => {
   return (
     <>
       <div>
-        <Link to={'/'}>Home</Link>
+        <Link to={'/'} className={styles.link}>
+          Home
+        </Link>
       </div>
       <div className={styles.container}>
         <h2>Top Scores</h2>
