@@ -66,7 +66,7 @@ const GameImage = ({ onCharacterFound, foundCharacters }) => {
       <img
         ref={imgRef}
         onClick={handleImageClick}
-        src="../../public/assets/whereswaldo.jpg"
+        src="/assets/whereswaldo.jpg"
         alt="where's Waldo game"
         className={styles.image}
       />
